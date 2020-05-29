@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
         User::truncate();
         UserInfo::truncate();
 
-        factory(User::class, 1000)->create()->each(function ($user){
+        factory(User::class, 20)->create()->each(function ($user){
             factory(UserInfo::class)->create([
                'user_id' => $user->id,
             ]);

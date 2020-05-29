@@ -41,8 +41,15 @@
                         </select>
                     </div>
 
+                    <div class="form-group">
+                        <label for="price_from" class="from-control">Price from</label>
+                        <input type="text" class="from-control" name="price_from" value="{{ request()->price_from }}">
+                        <label for="price_to" class="from-control">Price to</label>
+                        <input type="text" class="from-control" name="price_to" value="{{ request()->price_to }}">
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Filter</button>
-                    <a href="{{ route("users.index") }}" class="btn btn-warning">Сброс</a>
+                    <a href="{{ route("users.index") }}" class="btn btn-danger">Сброс</a>
                 </form>
             </aside>
         </div>
@@ -57,6 +64,7 @@
                         <p class="card-text">Birthday: {{ $user->info->birthday }}</p>
                         <p class="card-text">Gender: {{ $user->gender == '1' ? 'male' : 'female' }}</p>
                         <p class="card-text">Is Active: {{ $user->is_active ? 'Yes' : 'No' }}</p>
+                        <p class="card-text"><span style="color: #dc3545;">$Price</span>: {{ $user->price }}</p>
                     </div>
                 </div>
             </div>

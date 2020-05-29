@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->boolean('is_active')->default(true);
             $table->integer('gender');
+            $table->double('price')->default(0);
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');

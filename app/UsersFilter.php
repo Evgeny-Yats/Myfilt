@@ -47,6 +47,22 @@ class UsersFilter extends Model
         });
     }
 
+    public function price_from($value)
+    {
+        if (! $value) return;
+        $this->builder->where('price', '>=', $value);
+
+
+    }
+
+    public function price_to($value)
+    {
+        if (! $value) return;
+        $this->builder->where('price', '<=', $value);
+
+
+    }
+
     public function gender($value)
     {
         $this->builder->where('gender', $value);
