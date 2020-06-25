@@ -46,6 +46,17 @@
                         <input type="text" class="from-control" name="price_from" value="{{ request()->price_from }}">
                         <label for="price_to" class="from-control">Price to</label>
                         <input type="text" class="from-control" name="price_to" value="{{ request()->price_to }}">
+                        <br>
+                        <output for="fader" id="volume">
+                            @if (!is_null(request()->range_price))
+                                {{ request()->range_price }}
+                            @else
+                                0
+                            @endif
+                            
+                        </output>
+                        <br>
+                        <input type="range" name="range_price" id="fader" min="0" max="200000" value="{{ request()->range_price == null ? 0 : request()->range_price}}" step="1" oninput="outputUpdate(value)">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Filter</button>
@@ -71,5 +82,12 @@
         @endforeach
     </div>
 </div>
+<script>
+    function outputUpdate(vol) {
+        var output = document.querySelector('#volume');
+        output.value = vol;
+        output.style.left = vol - 20 + 'px';
+    }
+</script>
 </body>
 </html>

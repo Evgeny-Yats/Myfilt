@@ -30,6 +30,10 @@ class UsersFilter extends Model
     public function name($value)
     {
         $this->builder->where('name', 'like', "%$value%");
+
+//        if ($request->has('name')) {
+//            $users->where('name', 'like', "%$request->name%");
+//        }
     }
 
     public function is_active($value)
@@ -59,6 +63,14 @@ class UsersFilter extends Model
     {
         if (! $value) return;
         $this->builder->where('price', '<=', $value);
+
+
+    }
+
+    public function range_price($value)
+    {
+        if (! $value) return;
+        $this->builder->where('price', '>=', $value);
 
 
     }
